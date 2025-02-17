@@ -85,9 +85,11 @@ or `git apply mypatch.patch`
 
 BUILD THE IMAGE: `make docker-compose-build`
 
+example output:
+
+
 <details> 
 
-example output:
 
 ```
 [vagrant@localhost awx]$ make docker-compose-build
@@ -226,6 +228,11 @@ or run docker-compose in detached mode, start the containers using the following
 
 
 example output:
+
+
+<details> 
+
+
 ```
 [vagrant@localhost awx]$ make docker-compose COMPOSE_UP_OPTS=-d
 ansible-playbook -e ansible_python_interpreter=python3.11 -i tools/docker-compose/inventory tools/docker-compose/ansible/sources.yml \
@@ -403,10 +410,22 @@ CONTAINER ID   IMAGE                              COMMAND                  CREAT
 cdc68664bc8c   quay.io/sclorg/postgresql-15-c9s   "container-entrypoin…"   27 seconds ago   Up 26 seconds   0.0.0.0:5441->5432/tcp                                                                                                                                                                                             tools_postgres_1
 6759b8022161   redis:latest                       "redis-server /usr/l…"   27 seconds ago   Up 26 seconds   6379/tcp                                                                                                                                                                                                           tools_redis_1
 [vagrant@localhost awx]$
+
 ```
+
+</details>
+
+
 check logs `docker logs tools_awx_1`
-MAKE IU:
+
+- MAKE IU:
+
+<details>
+
+
 example output:
+
+
 ```
 [vagrant@localhost awx]$ docker exec tools_awx_1 make clean-ui ui-devel
 rm -rf node_modules
@@ -595,8 +614,14 @@ Find out more about deployment here:
 touch awx/ui/.ui-built
 make[1]: Leaving directory '/awx_devel'
 [vagrant@localhost awx]$
+
 ```
-CREATE ADMIN USER:
+
+</details>
+
+
+- CREATE ADMIN USER:
+
 ```
 [vagrant@localhost awx]$ docker exec -ti tools_awx_1 awx-manage createsuperuser
 Username: admin
@@ -608,11 +633,13 @@ Password (again):
 Superuser created successfully.
 [vagrant@localhost awx]$
 ```
-OPEN UI:
+
+- OPEN UI:
+
 The UI can be reached in your browser at https://localhost:8043/#/home, and the API can be found at https://localhost:8043/api/v2
 
+- RESULT EXAMPLE:
 ![image](https://github.com/user-attachments/assets/b2f5519a-92b6-479f-985e-c2e6467597b6)
-
 
 
 addit ref: https://github.com/vmazurukrtelecom/shell_scripts/blob/main/install_awx17_OL8.sh 
