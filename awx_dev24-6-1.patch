@@ -1,0 +1,67 @@
+diff --git a/requirements/requirements.in b/requirements/requirements.in
+index 3dc2bb6a46..859acaf023 100644
+--- a/requirements/requirements.in
++++ b/requirements/requirements.in
+@@ -12,7 +12,7 @@ cryptography>=41.0.7  # CVE-2023-49083
+ Cython<3 # due to https://github.com/yaml/pyyaml/pull/702
+ daphne
+ distro
+-django==4.2.10  # CVE-2024-24680
++django==4.2.16  # CVE-2024-24680
+ django-auth-ldap
+ django-cors-headers
+ django-crum
+@@ -59,7 +59,7 @@ pyzstd  # otel collector log file compression library
+ receptorctl
+ social-auth-core[openidconnect]==4.4.2  # see UPGRADE BLOCKERs
+ social-auth-app-django==5.4.0  # see UPGRADE BLOCKERs
+-sqlparse>=0.4.4   # Required by django https://github.com/ansible/awx/security/dependabot/96
++sqlparse>=0.5.2   # Required by django https://github.com/ansible/awx/security/dependabot/96
+ redis
+ requests
+ slack-sdk
+diff --git a/requirements/requirements.txt b/requirements/requirements.txt
+index 59241c34fd..723cd37e95 100644
+--- a/requirements/requirements.txt
++++ b/requirements/requirements.txt
+@@ -127,7 +127,7 @@ deprecated==1.2.14
+     #   opentelemetry-exporter-otlp-proto-http
+ distro==1.9.0
+     # via -r /awx_devel/requirements/requirements.in
+-django==4.2.10
++django==4.2.16
+     # via
+     #   -r /awx_devel/requirements/requirements.in
+     #   channels
+@@ -518,7 +518,7 @@ social-auth-core[openidconnect]==4.4.2
+     # via
+     #   -r /awx_devel/requirements/requirements.in
+     #   social-auth-app-django
+-sqlparse==0.4.4
++sqlparse==0.5.2
+     # via
+     #   -r /awx_devel/requirements/requirements.in
+     #   django
+diff --git a/tools/ansible/roles/dockerfile/templates/Dockerfile.j2 b/tools/ansible/roles/dockerfile/templates/Dockerfile.j2
+index 90046482c0..d8f3e088f0 100644
+--- a/tools/ansible/roles/dockerfile/templates/Dockerfile.j2
++++ b/tools/ansible/roles/dockerfile/templates/Dockerfile.j2
+@@ -37,7 +37,7 @@ RUN dnf -y update && dnf install -y 'dnf-command(config-manager)' && \
+     nss \
+     openldap-devel \
+     # pin to older openssl, see jira AAP-23449
+-    openssl-3.0.7 \
++#    openssl-3.0.7 \
+     patch \
+     postgresql \
+     postgresql-devel \
+@@ -123,7 +123,7 @@ RUN dnf -y update && dnf install -y 'dnf-command(config-manager)' && \
+     nginx \
+     "openldap >= 2.6.2-3" \
+     # pin to older openssl, see jira AAP-23449
+-    openssl-3.0.7 \
++    # openssl-3.0.7 \
+     postgresql \
+     python3.11 \
+     "python3.11-devel" \
+     
