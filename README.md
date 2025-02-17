@@ -39,47 +39,48 @@ sudo docker version
 # sudo usermod -aG docker vagrant
 sudo usermod -aG docker $USER
 newgrp docker
-id```
-
-
+id
+```
 TEST
-
-
-```docker run hello-world```
+```
+docker run hello-world
+```
 
 INSTALL DOCKER-COMPOSE (v1 ! - i.e. not "docker compose")
 https://docs.docker.com/compose/install/standalone/
-```curl -SL https://github.com/docker/compose/releases/download/v2.33.0/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
+```
+curl -SL https://github.com/docker/compose/releases/download/v2.33.0/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
-docker-compose version```
+docker-compose version
+```
 ====
-
 CLONE REPO
-```git clone -b 24.6.1 https://github.com/ansible/awx.git```
-
+```
+git clone -b 24.6.1 https://github.com/ansible/awx.git
+```
 PATCH DEPENDENCIES (old)
-
 /requirements/requirements.txt /requirements/requirements.in
-
-```-django==4.2.10  # CVE-2024-24680
+```
+-django==4.2.10  # CVE-2024-24680
 +django==4.2.16  # CVE-2024-24680
 
-
 -sqlparse==0.4.4
-+sqlparse==0.5.2```
-
++sqlparse==0.5.2
+```
 /tools/ansible/roles/dockerfile/templates/Dockerfile.j2
-```     openldap-devel \
+```
+     openldap-devel \
      # pin to older openssl, see jira AAP-23449
 -    openssl-3.0.7 \
-+#    openssl-3.0.7 \```
++#    openssl-3.0.7 \
+```
 
 or git patch mypatch.patch
 
-BUILD THE IMAGE:
-```make docker-compose-build```
+BUILD THE IMAGE: `make docker-compose-build`
 example output:
-```[vagrant@localhost awx]$ make docker-compose-build
+```
+[vagrant@localhost awx]$ make docker-compose-build
 ansible-playbook -e ansible_python_interpreter=python3.11 tools/ansible/dockerfile.yml \
         -e dockerfile_name=Dockerfile.dev \
         -e build_dev=True \
@@ -201,13 +202,13 @@ DOCKER_BUILDKIT=1 docker build \
 [vagrant@localhost awx]$ docker images
 REPOSITORY                  TAG       IMAGE ID       CREATED          SIZE
 ghcr.io/ansible/awx_devel   HEAD      86aa0d761d12   10 minutes ago   2.3GB
-[vagrant@localhost awx]$```
-
-START CONTAINERS:
-```make docker-compose```
-or ror running docker-compose detached mode, start the containers using the following command: ```make docker-compose COMPOSE_UP_OPTS=-d```
+[vagrant@localhost awx]$
+```
+START CONTAINERS:`make docker-compose`
+or run docker-compose in detached mode, start the containers using the following command: ```make docker-compose COMPOSE_UP_OPTS=-d```
 example output:
-```[vagrant@localhost awx]$ make docker-compose COMPOSE_UP_OPTS=-d
+```
+[vagrant@localhost awx]$ make docker-compose COMPOSE_UP_OPTS=-d
 ansible-playbook -e ansible_python_interpreter=python3.11 -i tools/docker-compose/inventory tools/docker-compose/ansible/sources.yml \
     -e awx_image=ghcr.io/ansible/awx_devel \
     -e awx_image_tag=HEAD \
@@ -382,13 +383,13 @@ CONTAINER ID   IMAGE                              COMMAND                  CREAT
 3594fcf1c206   ghcr.io/ansible/awx_devel:HEAD     "/entrypoint.sh laun…"   27 seconds ago   Up 17 seconds   0.0.0.0:2222->2222/tcp, 0.0.0.0:6899->6899/tcp, 0.0.0.0:7899-7999->7899-7999/tcp, 0.0.0.0:8013->8013/tcp, 0.0.0.0:8043->8043/tcp, 0.0.0.0:8080->8080/tcp, 22/tcp, 0.0.0.0:9888->9888/tcp, 0.0.0.0:3000->3001/tcp   tools_awx_1
 cdc68664bc8c   quay.io/sclorg/postgresql-15-c9s   "container-entrypoin…"   27 seconds ago   Up 26 seconds   0.0.0.0:5441->5432/tcp                                                                                                                                                                                             tools_postgres_1
 6759b8022161   redis:latest                       "redis-server /usr/l…"   27 seconds ago   Up 26 seconds   6379/tcp                                                                                                                                                                                                           tools_redis_1
-[vagrant@localhost awx]$```
-
-check logs ```docker logs tools_awx_1```
-
+[vagrant@localhost awx]$
+```
+check logs `docker logs tools_awx_1`
 MAKE IU:
 example output:
-```[vagrant@localhost awx]$ docker exec tools_awx_1 make clean-ui ui-devel
+```
+[vagrant@localhost awx]$ docker exec tools_awx_1 make clean-ui ui-devel
 rm -rf node_modules
 rm -rf awx/ui/node_modules
 rm -rf awx/ui/build
@@ -574,10 +575,11 @@ Find out more about deployment here:
 
 touch awx/ui/.ui-built
 make[1]: Leaving directory '/awx_devel'
-[vagrant@localhost awx]$ ```
-
+[vagrant@localhost awx]$
+```
 CREATE ADMIN USER:
-```[vagrant@localhost awx]$ docker exec -ti tools_awx_1 awx-manage createsuperuser
+```
+[vagrant@localhost awx]$ docker exec -ti tools_awx_1 awx-manage createsuperuser
 Username: admin
 Error: That username is already taken.
 Username: root
@@ -585,8 +587,8 @@ Email address: a@a.com
 Password:
 Password (again):
 Superuser created successfully.
-[vagrant@localhost awx]$```
-
+[vagrant@localhost awx]$
+```
 OPEN UI:
 The UI can be reached in your browser at https://localhost:8043/#/home, and the API can be found at https://localhost:8043/api/v2
 
