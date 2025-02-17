@@ -4,13 +4,16 @@ latest stable version of AWX in DOCKER (suitable for plugin development)
 
 REF: https://github.com/ansible/awx/blob/24.6.1/tools/docker-compose/README.md
 
-- install OS and:
+install OS and:
+------
 ```
 sudo dnf install python3 python3-pip
 sudo dnf config-manager --set-enabled ol9_codeready_builder
 sudo dnf group install "Development Tools"
 ```
-- disable DNS via DHCP (for docker image download - failed via ipv6)
+
+disable DNS via DHCP (for docker image download - failed via ipv6)
+------
 
 ```
 sudo nmcli conn modify "eth0" ipv4.ignore-auto-dns yes
@@ -20,15 +23,18 @@ sudo nmcli conn modify "eth0" ipv4.ignore-auto-dns yes
 
 addit_ref: https://github.com/vmazurukrtelecom/shell_scripts/blob/main/general_ol.sh
 
-- INSTALL ANSIBLE VIA PIP
+INSTALL ANSIBLE VIA PIP
+------
 ```
 python3 -m pip install --upgrade pip
 python3 -m pip install ansible
 ansible --version
 ```
 
-- INSTALL DOCKER
+INSTALL DOCKER
+------
 ref: https://docs.docker.com/engine/install/centos/
+
 ```sudo dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 sudo dnf -y update
 sudo dnf -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
@@ -42,30 +48,32 @@ sudo usermod -aG docker $USER
 newgrp docker
 id
 ```
-TEST
+test
 ```
 docker run hello-world
 ```
 
--INSTALL DOCKER-COMPOSE
-
+INSTALL DOCKER-COMPOSE
+------
 (v1 ! - i.e. not "docker compose")
 
 
-https://docs.docker.com/compose/install/standalone/
+ref: https://docs.docker.com/compose/install/standalone/
 ```
 curl -SL https://github.com/docker/compose/releases/download/v2.33.0/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
 docker-compose version
 ```
 
-- CLONE REPO
-- 
+CLONE REPO
+------
+
 ```
 git clone -b 24.6.1 https://github.com/ansible/awx.git
 ```
 
-- PATCH DEPENDENCIES (old)
+PATCH DEPENDENCIES (old)
+------
 
 /requirements/requirements.txt /requirements/requirements.in
 ```
@@ -86,7 +94,8 @@ git clone -b 24.6.1 https://github.com/ansible/awx.git
 or `git apply mypatch.patch`
 
 
-- BUILD THE IMAGE: `make docker-compose-build`
+BUILD THE IMAGE: `make docker-compose-build`
+------
 
 example output:
 
@@ -224,8 +233,8 @@ ghcr.io/ansible/awx_devel   HEAD      86aa0d761d12   10 minutes ago   2.3GB
 </details>
 
 
-- START CONTAINERS:`make docker-compose`
-
+START CONTAINERS:`make docker-compose`
+------
 
 or run docker-compose in detached mode, start the containers using the following command: ```make docker-compose COMPOSE_UP_OPTS=-d```
 
@@ -421,8 +430,8 @@ cdc68664bc8c   quay.io/sclorg/postgresql-15-c9s   "container-entrypoin…"   27 
 
 check logs `docker logs tools_awx_1`
 
-- MAKE IU: `docker exec tools_awx_1 make clean-ui ui-devel`
-
+MAKE IU: `docker exec tools_awx_1 make clean-ui ui-devel`
+------
 
 example output:
 
@@ -622,9 +631,8 @@ make[1]: Leaving directory '/awx_devel'
 
 </details>
 
-
-- CREATE ADMIN USER:
-
+CREATE ADMIN USER:
+------
 ```
 [vagrant@localhost awx]$ docker exec -ti tools_awx_1 awx-manage createsuperuser
 Username: admin
@@ -637,11 +645,12 @@ Superuser created successfully.
 [vagrant@localhost awx]$
 ```
 
-- OPEN UI:
-
+OPEN UI:
+------
 The UI can be reached in your browser at https://localhost:8043/#/home, and the API can be found at https://localhost:8043/api/v2
 
-- RESULT EXAMPLE:
+RESULT EXAMPLE:
+------
 ![image](https://github.com/user-attachments/assets/b2f5519a-92b6-479f-985e-c2e6467597b6)
 
 
