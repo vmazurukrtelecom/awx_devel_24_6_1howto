@@ -659,6 +659,7 @@ RESULT EXAMPLE:
 ------
 ![image](https://github.com/user-attachments/assets/b2f5519a-92b6-479f-985e-c2e6467597b6)
 
+![image](https://github.com/vmazurukrtelecom/awx_devel_24_6_1howto/blob/main/image.png)
 
 addit ref: https://github.com/vmazurukrtelecom/shell_scripts/blob/main/install_awx17_OL8.sh 
 
