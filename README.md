@@ -4,9 +4,6 @@ latest stable version of AWX in DOCKER (suitable for plugin development)
 
 REF: https://github.com/ansible/awx/blob/24.6.1/tools/docker-compose/README.md
 
-addit ref: https://github.com/vmazurukrtelecom/shell_scripts/blob/main/install_awx17_OL8.sh 
-
-
 install OS and:
 ```
 sudo dnf install python3 python3-pip
@@ -26,7 +23,7 @@ sudo nmcli conn modify "eth0" ipv4.ignore-auto-dns yes
 INSTALL ANSIBLE VIA PIP
 ```
 python3 -m pip install --upgrade pip
-python -m pip install ansible
+python3 -m pip install ansible
 ansible --version
 ```
 
@@ -598,6 +595,9 @@ The UI can be reached in your browser at https://localhost:8043/#/home, and the 
 
 ![image](https://github.com/user-attachments/assets/b2f5519a-92b6-479f-985e-c2e6467597b6)
 
+
+
+addit ref: https://github.com/vmazurukrtelecom/shell_scripts/blob/main/install_awx17_OL8.sh 
 
 
 
