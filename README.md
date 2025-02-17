@@ -76,7 +76,7 @@ PATCH DEPENDENCIES (old)
 +#    openssl-3.0.7 \
 ```
 
-or git patch mypatch.patch
+or `git apply mypatch.patch`
 
 BUILD THE IMAGE: `make docker-compose-build`
 example output:
