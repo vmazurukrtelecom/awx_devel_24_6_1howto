@@ -4,30 +4,30 @@ latest stable version of AWX in DOCKER (suitable for plugin development)
 
 REF: https://github.com/ansible/awx/blob/24.6.1/tools/docker-compose/README.md
 
-install OS and:
+- install OS and:
 ```
 sudo dnf install python3 python3-pip
 sudo dnf config-manager --set-enabled ol9_codeready_builder
 sudo dnf group install "Development Tools"
 ```
-disable DNS via DHCP (for docker image download - failed via ipv6)
+- disable DNS via DHCP (for docker image download - failed via ipv6)
 
-
-ref: https://github.com/vmazurukrtelecom/shell_scripts/blob/main/general_ol.sh
 ```
 sudo nmcli conn modify "eth0" ipv4.ignore-auto-dns yes
   sudo nmcli conn modify "eth0" ipv4.dns  "8.8.8.8,1.1.1.1"
   sudo nmcli connection up "eth0"
 ```
 
-INSTALL ANSIBLE VIA PIP
+addit_ref: https://github.com/vmazurukrtelecom/shell_scripts/blob/main/general_ol.sh
+
+- INSTALL ANSIBLE VIA PIP
 ```
 python3 -m pip install --upgrade pip
 python3 -m pip install ansible
 ansible --version
 ```
 
-INSTALL DOCKER
+- INSTALL DOCKER
 ref: https://docs.docker.com/engine/install/centos/
 ```sudo dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 sudo dnf -y update
@@ -58,12 +58,14 @@ curl -SL https://github.com/docker/compose/releases/download/v2.33.0/docker-comp
 chmod +x /usr/local/bin/docker-compose
 docker-compose version
 ```
-====
-CLONE REPO
+
+- CLONE REPO
+- 
 ```
 git clone -b 24.6.1 https://github.com/ansible/awx.git
 ```
-PATCH DEPENDENCIES (old)
+
+- PATCH DEPENDENCIES (old)
 
 /requirements/requirements.txt /requirements/requirements.in
 ```
@@ -83,7 +85,8 @@ PATCH DEPENDENCIES (old)
 
 or `git apply mypatch.patch`
 
-BUILD THE IMAGE: `make docker-compose-build`
+
+- BUILD THE IMAGE: `make docker-compose-build`
 
 example output:
 
@@ -221,7 +224,7 @@ ghcr.io/ansible/awx_devel   HEAD      86aa0d761d12   10 minutes ago   2.3GB
 </details>
 
 
-START CONTAINERS:`make docker-compose`
+- START CONTAINERS:`make docker-compose`
 
 
 or run docker-compose in detached mode, start the containers using the following command: ```make docker-compose COMPOSE_UP_OPTS=-d```
@@ -418,13 +421,13 @@ cdc68664bc8c   quay.io/sclorg/postgresql-15-c9s   "container-entrypoin…"   27 
 
 check logs `docker logs tools_awx_1`
 
-- MAKE IU:
-
-<details>
+- MAKE IU: `docker exec tools_awx_1 make clean-ui ui-devel`
 
 
 example output:
 
+
+<details>
 
 ```
 [vagrant@localhost awx]$ docker exec tools_awx_1 make clean-ui ui-devel
