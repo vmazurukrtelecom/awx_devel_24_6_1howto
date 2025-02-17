@@ -85,9 +85,10 @@ or `git apply mypatch.patch`
 
 BUILD THE IMAGE: `make docker-compose-build`
 
+<details> 
 
 example output:
-<details> 
+
 ```
 [vagrant@localhost awx]$ make docker-compose-build
 ansible-playbook -e ansible_python_interpreter=python3.11 tools/ansible/dockerfile.yml \
@@ -212,8 +213,11 @@ DOCKER_BUILDKIT=1 docker build \
 REPOSITORY                  TAG       IMAGE ID       CREATED          SIZE
 ghcr.io/ansible/awx_devel   HEAD      86aa0d761d12   10 minutes ago   2.3GB
 [vagrant@localhost awx]$
+
 ```
+
 </details>
+
 
 START CONTAINERS:`make docker-compose`
 
