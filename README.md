@@ -47,7 +47,11 @@ TEST
 docker run hello-world
 ```
 
-INSTALL DOCKER-COMPOSE (v1 ! - i.e. not "docker compose")
+-INSTALL DOCKER-COMPOSE
+
+(v1 ! - i.e. not "docker compose")
+
+
 https://docs.docker.com/compose/install/standalone/
 ```
 curl -SL https://github.com/docker/compose/releases/download/v2.33.0/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
@@ -60,6 +64,7 @@ CLONE REPO
 git clone -b 24.6.1 https://github.com/ansible/awx.git
 ```
 PATCH DEPENDENCIES (old)
+
 /requirements/requirements.txt /requirements/requirements.in
 ```
 -django==4.2.10  # CVE-2024-24680
@@ -79,7 +84,10 @@ PATCH DEPENDENCIES (old)
 or `git apply mypatch.patch`
 
 BUILD THE IMAGE: `make docker-compose-build`
+
+
 example output:
+<details> 
 ```
 [vagrant@localhost awx]$ make docker-compose-build
 ansible-playbook -e ansible_python_interpreter=python3.11 tools/ansible/dockerfile.yml \
@@ -205,8 +213,14 @@ REPOSITORY                  TAG       IMAGE ID       CREATED          SIZE
 ghcr.io/ansible/awx_devel   HEAD      86aa0d761d12   10 minutes ago   2.3GB
 [vagrant@localhost awx]$
 ```
+</details>
+
 START CONTAINERS:`make docker-compose`
+
+
 or run docker-compose in detached mode, start the containers using the following command: ```make docker-compose COMPOSE_UP_OPTS=-d```
+
+
 example output:
 ```
 [vagrant@localhost awx]$ make docker-compose COMPOSE_UP_OPTS=-d
