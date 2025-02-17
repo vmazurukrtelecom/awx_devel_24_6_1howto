@@ -5,11 +5,11 @@ REF: https://github.com/ansible/awx/blob/24.6.1/tools/docker-compose/README.md
 
 addit ref: https://github.com/vmazurukrtelecom/shell_scripts/blob/main/install_awx17_OL8.sh 
 
-
 install OS and:
 ```sudo dnf install python3 python3-pip
 sudo dnf config-manager --set-enabled ol9_codeready_builder
 sudo dnf group install "Development Tools"```
+
 
 disable DNS via DHCP (for docker image download - failed via ipv6
 ref: https://github.com/vmazurukrtelecom/shell_scripts/blob/main/general_ol.sh
@@ -17,10 +17,12 @@ ref: https://github.com/vmazurukrtelecom/shell_scripts/blob/main/general_ol.sh
   sudo nmcli conn modify "eth0" ipv4.dns  "8.8.8.8,1.1.1.1"
   sudo nmcli connection up "eth0"```
 
+
 INSTALL ANSIBLE VIA PIP
 ```python3 -m pip install --upgrade pip
 python -m pip install ansible
 ansible --version```
+
 
 INSTALL DOCKER
 ref: https://docs.docker.com/engine/install/centos/
@@ -36,7 +38,11 @@ sudo docker version
 sudo usermod -aG docker $USER
 newgrp docker
 id```
+
+
 TEST
+
+
 ```docker run hello-world```
 
 INSTALL DOCKER-COMPOSE (v1 ! - i.e. not "docker compose")
