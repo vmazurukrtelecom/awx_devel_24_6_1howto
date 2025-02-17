@@ -94,9 +94,9 @@ PATCH DEPENDENCIES (old)
 or `git apply mypatch.patch`
 
 
-BUILD THE IMAGE: `make docker-compose-build`
+BUILD THE IMAGE:
 ------
-
+`make docker-compose-build`
 example output:
 
 
@@ -233,8 +233,10 @@ ghcr.io/ansible/awx_devel   HEAD      86aa0d761d12   10 minutes ago   2.3GB
 </details>
 
 
-START CONTAINERS:`make docker-compose`
+START CONTAINERS:
 ------
+`make docker-compose`
+
 
 or run docker-compose in detached mode, start the containers using the following command: ```make docker-compose COMPOSE_UP_OPTS=-d```
 
@@ -430,8 +432,10 @@ cdc68664bc8c   quay.io/sclorg/postgresql-15-c9s   "container-entrypoin…"   27 
 
 check logs `docker logs tools_awx_1`
 
-MAKE IU: `docker exec tools_awx_1 make clean-ui ui-devel`
+MAKE IU: 
 ------
+`docker exec tools_awx_1 make clean-ui ui-devel`
+
 
 example output:
 
