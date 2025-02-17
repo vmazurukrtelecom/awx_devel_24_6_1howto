@@ -1,9 +1,11 @@
 # awx_devel_24_6_1howto
 
+latest stable version of AWX in DOCKER (suitable for plugin development)
+
 REF: https://github.com/ansible/awx/blob/24.6.1/tools/docker-compose/README.md
 
-
 addit ref: https://github.com/vmazurukrtelecom/shell_scripts/blob/main/install_awx17_OL8.sh 
+
 
 install OS and:
 ```
@@ -11,7 +13,9 @@ sudo dnf install python3 python3-pip
 sudo dnf config-manager --set-enabled ol9_codeready_builder
 sudo dnf group install "Development Tools"
 ```
-disable DNS via DHCP (for docker image download - failed via ipv6
+disable DNS via DHCP (for docker image download - failed via ipv6)
+
+
 ref: https://github.com/vmazurukrtelecom/shell_scripts/blob/main/general_ol.sh
 ```
 sudo nmcli conn modify "eth0" ipv4.ignore-auto-dns yes
