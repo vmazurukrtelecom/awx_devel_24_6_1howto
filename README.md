@@ -96,6 +96,7 @@ or
 cd awx
 wget https://raw.githubusercontent.com/vmazurukrtelecom/awx_devel_24_6_1howto/refs/heads/main/awx_dev24-6-1.patch
 git apply awx_dev24-6-1.patch
+git diff
 ```
 
 
