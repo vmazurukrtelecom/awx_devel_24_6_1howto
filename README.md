@@ -12,7 +12,7 @@ sudo dnf config-manager --set-enabled ol9_codeready_builder
 sudo dnf -y group install "Development Tools"
 ```
 
-disable DNS via DHCP (for docker image download - failed via ipv6)
+(optional) disable DNS via DHCP (when docker image download failed via ipv6)
 ------
 
 ```
