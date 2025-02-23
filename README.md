@@ -93,9 +93,8 @@ PATCH DEPENDENCIES (old)
 
 or
 ```
+cd awx
 wget https://github.com/vmazurukrtelecom/awx_devel_24_6_1howto/blob/main/awx_dev24-6-1.patch
-
-
 git apply awx_dev24-6-1.patch
 ```
 
