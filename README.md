@@ -7,9 +7,9 @@ REF: https://github.com/ansible/awx/blob/24.6.1/tools/docker-compose/README.md
 install OS and:
 ------
 ```
-sudo dnf install python3 python3-pip
+sudo dnf -y install python3 python3-pip
 sudo dnf config-manager --set-enabled ol9_codeready_builder
-sudo dnf group install "Development Tools"
+sudo dnf -y group install "Development Tools"
 ```
 
 disable DNS via DHCP (for docker image download - failed via ipv6)
