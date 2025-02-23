@@ -17,8 +17,8 @@ disable DNS via DHCP (for docker image download - failed via ipv6)
 
 ```
 sudo nmcli conn modify "eth0" ipv4.ignore-auto-dns yes
-  sudo nmcli conn modify "eth0" ipv4.dns  "8.8.8.8,1.1.1.1"
-  sudo nmcli connection up "eth0"
+sudo nmcli conn modify "eth0" ipv4.dns  "8.8.8.8,1.1.1.1"
+sudo nmcli connection up "eth0"
 ```
 
 addit_ref: https://github.com/vmazurukrtelecom/shell_scripts/blob/main/general_ol.sh
@@ -60,8 +60,8 @@ INSTALL DOCKER-COMPOSE
 
 ref: https://docs.docker.com/compose/install/standalone/
 ```
-curl -SL https://github.com/docker/compose/releases/download/v2.33.0/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
-chmod +x /usr/local/bin/docker-compose
+sudo curl -SL https://github.com/docker/compose/releases/download/v2.33.0/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
 docker-compose version
 ```
 
