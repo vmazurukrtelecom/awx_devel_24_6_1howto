@@ -91,11 +91,13 @@ PATCH DEPENDENCIES (old)
 +#    openssl-3.0.7 \
 ```
 
-or `
+or
+```
 wget https://github.com/vmazurukrtelecom/awx_devel_24_6_1howto/blob/main/awx_dev24-6-1.patch
 
 
-git apply awx_dev24-6-1.patch`
+git apply awx_dev24-6-1.patch
+```
 
 
 BUILD THE IMAGE:
