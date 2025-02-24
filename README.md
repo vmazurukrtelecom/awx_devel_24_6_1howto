@@ -243,7 +243,10 @@ ghcr.io/ansible/awx_devel   HEAD      86aa0d761d12   10 minutes ago   2.3GB
 
 START CONTAINERS:
 ------
-`make docker-compose`
+`make docker-compose` or:
+```
+make docker-compose COMPOSE_UP_OPTS=-d
+```
 
 
 or run docker-compose in detached mode, start the containers using the following command: ```make docker-compose COMPOSE_UP_OPTS=-d```
@@ -670,6 +673,13 @@ RESULT EXAMPLE:
 addit ref: https://github.com/vmazurukrtelecom/shell_scripts/blob/main/install_awx17_OL8.sh 
 
 
-
+STOP / RESUME CONTAINERS:
+-----
+```
+make docker-compose-down
+```
+```
+make docker-compose-up COMPOSE_UP_OPTS=-d
+```
 
 
