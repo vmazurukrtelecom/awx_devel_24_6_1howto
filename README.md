@@ -9,7 +9,7 @@ install OS and:
 ```
 sudo dnf -y install python3 python3-pip
 sudo dnf config-manager --set-enabled ol9_codeready_builder
-sudo dnf -y group install "Development Tools"
+## optional sudo dnf -y group install "Development Tools"
 ```
 
 (optional) disable DNS via DHCP (when docker image download failed via ipv6)
@@ -30,12 +30,16 @@ python3 -m pip install --upgrade pip
 python3 -m pip install ansible
 ansible --version
 ```
+(or via DNF) 
+
 
 INSTALL DOCKER
 ------
 ref: https://docs.docker.com/engine/install/centos/
 
-```sudo dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+```
+
+sudo dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 sudo dnf -y update
 sudo dnf -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 sudo systemctl enable docker
@@ -60,8 +64,9 @@ INSTALL DOCKER-COMPOSE
 
 ref: https://docs.docker.com/compose/install/standalone/
 ```
-sudo curl -SL https://github.com/docker/compose/releases/download/v2.33.0/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
+sudo curl -SL https://github.com/docker/compose/releases/download/v2.34.0/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
+# sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 docker-compose version
 ```
 
@@ -70,6 +75,8 @@ CLONE REPO
 
 ```
 git clone -b 24.6.1 https://github.com/ansible/awx.git
+
+# git clone https://github.com/ansible/awx.git
 ```
 
 PATCH DEPENDENCIES (old)
