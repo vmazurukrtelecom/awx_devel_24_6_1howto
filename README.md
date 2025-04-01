@@ -77,6 +77,9 @@ CLONE REPO
 git clone -b 24.6.1 https://github.com/ansible/awx.git
 
 # git clone https://github.com/ansible/awx.git
+# cd awx
+# git checkout 24.6.1
+
 ```
 
 PATCH DEPENDENCIES (old)
